@@ -1,4 +1,4 @@
-# ZingChart-vue
+# zingchart-vue
 
 Quickly add charts to your Vue application with our ZingChart component
 
@@ -19,11 +19,11 @@ You can either include the zingchart-vue component to your project globally or l
 
 In your main app file, add the following lines of code:
 
-```
+```js
 import Vue from 'vue';
-import ZingChartVue from 'zingchart-vue';
+import zingchartVue from 'zingchart-vue';
 
-Vue.use(ZingChartVue)
+Vue.component('zingchart', zingchartVue)
 ```
 This will register the zingchart component globally throughout your application. While the easiest installation option, this will load ZingChart immediately on your user's first load of the application - regardless if a chart is on the first page or not. We reccomend this approach if ZingChart is used heavily across multiple pages.
 
@@ -32,13 +32,13 @@ This will register the zingchart component globally throughout your application.
 
 In each component where ZingChart is being used, include the following in your component's configuration:
 
-```
-import {Chart} from 'zingchart-vue';
+```js
+import zingchartVue from 'zingchart-vue';
 
 {
     ...
     components: {
-        zingchart: Chart,
+        zingchart: zingchartVue,
         ...
     }
 }
@@ -50,11 +50,11 @@ We reccomend this approach if ZingChart is only included in a few, un-related pa
 
 The `zingchart-vue` component can be included into template as an element. Below is a simple example of a line chart:
 
-```
+```html
 <zingchart :config="chartConfig"></zingchart>
 ```
 
-```
+```js
 ...
 new Vue({
     ...
@@ -70,7 +70,6 @@ new Vue({
     }
     ...
 })
-
 ```
 
 ## Hello World
@@ -85,11 +84,11 @@ $ npm run dev
 
 ### config [object]
 
-```
-// html
+```html
 <zingchart :config="myConfig" :series="myData"></zingchart>
+```
 
-// js
+```js
 {
     data() {
         return {
@@ -113,12 +112,11 @@ The id for the DOM element for ZingChart to attach to. If no id is specified, th
 ### series [array] (optional)
 Accepts an array of series objects, and overrides a series if it was supplied into the config object. Varries by chart type used - Refer to the ZingChart documentation for more details.
 
-```
-// html
+```html
 <zingchart :config="myConfig" :series="myData"></zingchart>
+```
 
-// js
-
+```js
 {
     data() {
         return {
@@ -166,7 +164,6 @@ All zingchart methods are readily available on the component's instance to call.
 ```
 
 ```js
-
 {
     ...
     methods: {
