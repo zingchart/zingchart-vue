@@ -2,19 +2,24 @@
   "name": "zingchart-vue",
   "version": "1.0.0",
   "description": "A Vue component for ZingChart",
-  "main": "dist/zingchartVue.common.js",
+  "author": "ZingSoft Inc",
   "scripts": {
     "build": "vue-cli-service build --target lib --name zingchartVue ZingChart.vue",
+    "test": "vue-cli-service test:unit",
     "dev": "vue serve helloWorld/App.vue",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:unit": "vue-cli-service test:unit"
   },
-  "author": "ZingSoft Inc",
-  "license": "MIT",
+  "main": "dist/zingchartVue.common.js",
   "dependencies": {
     "zingchart": "^2.8.7"
   },
   "devDependencies": {
+    "@vue/cli-plugin-unit-mocha": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "chai": "^4.1.2",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "license": "MIT"
 }
