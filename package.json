@@ -1,0 +1,20 @@
+{
+  "name": "zingchart-vue",
+  "version": "1.0.0",
+  "description": "A Vue component for ZingChart",
+  "main": "dist/zingchartVue.common.js",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name zingchartVue ZingChart.vue",
+    "dev": "vue serve helloWorld/App.vue",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZingSoft Inc",
+  "license": "MIT",
+  "dependencies": {
+    "zingchart": "^2.8.7"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^3.11.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
