@@ -102,16 +102,18 @@ export default {
     }
   },
   watch: {
-    config: val => {
-      window.zingchart.exec(this.chartId, 'setdata', val);
+    config: function(val) {
+      window.zingchart.exec(this.chartId, 'setdata', {
+        data: val
+      });
     },
-    height: () => { this.resize() },
-    series: val => {
+    height: function() { this.resize() },
+    series: function() {
       window.zingchart.exec(this.chartId, 'setseriesdata', {
         values: val
       });
     },
-    width: () => { this.resize() },
+    width: function() { this.resize() },
   }
 };
 </script>

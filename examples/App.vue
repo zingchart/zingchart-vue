@@ -1,29 +1,40 @@
-
 <template>
   <div>
-    <zingchart ref="chart" :config="chartConfig" @complete="chartDone" @node_mouseover="nodeInfo" />
+    <h1>vue-zingchart playground</h1>
+    <p>A simple example of binding data, mutations with methods, and listening to events</p>
+    <header>
+      <a href="#" class="button" @click="activeDemo = 'simple'">Simple</a>
+      <a href="#" class="button" @click="activeDemo = 'dynamic'">Dynamic Config</a>
+      <a href="#" class="button" @click="activeDemo = 'methods'">Methods</a>
+      <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
+    </header>
 
-    <h2>Example methods</h2>
-    <button @click="addPlot">Add a plot</button>
-    <button @click="addNodes">Add a node to each plot</button>
-
-    <h2>Output from events</h2>
-    <h3>Events bound:</h3>
-    <ul>
-      <li v-for="(item, index) in listOfEventListeners" :key="index">{{item}}</li>
-    </ul>
-    <textarea ref="output" cols="50" rows="10"></textarea>
+    <simple-view v-show="activeDemo === 'simple'"/>
+    <dynamic-view v-show="activeDemo === 'dynamic'"/>
+    <methods-view v-show="activeDemo === 'methods'"/>
+    <events-view v-show="activeDemo === 'events'"/>
   </div>
 </template>
 
 <script>
-import ZingChart from "../ZingChart.vue";
+import Vue from 'vue';
+import zingchartVue from '../ZingChart.vue';
+import MethodsView from './Methods.vue';
+import EventsView from './Events.vue';
+import DynamicView from './Dynamic.vue';
+import SimpleView from './Simple.vue';
+Vue.component('zingchart', zingchartVue);
+
 export default {
   components: {
-    zingchart: ZingChart
+    SimpleView,
+    DynamicView,
+    MethodsView,
+    EventsView,
   },
   data() {
     return {
+      activeDemo: 'simple',
       nodeCount: 10,
       chartConfig: {
         type: "line",
