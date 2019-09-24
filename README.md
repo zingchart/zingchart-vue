@@ -71,14 +71,6 @@ new Vue({
 })
 ```
 
-## Hello World
-This repository contains a sample Vue application to give you an easy way to see the component in action
-```
-$ npm run dev 
-```
-
-
-
 ## Parameters
 
 ### config [object]
@@ -177,4 +169,8 @@ All zingchart methods are readily available on the component's instance to call.
 
 For a list of all the methods that you can call and the parameters each method can take, refer to the complete documentation on https://www.zingchart.com/docs/methods
 
-
+## Hello World and Examples
+This repository contains a sample Vue application to give you an easy way to see the component in action
+```
+$ npm run dev 
+```

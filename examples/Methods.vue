@@ -2,11 +2,11 @@
   <div>
     <h3>Modifying the chart with ZingChart methods</h3>
     <p>Every method available to ZingChart is available on the component's instance.</p>
-    <zingchart ref="chart" :config="chartConfig" />
+    <zingchart ref="chart" :data="chartData" />
 
     <h4>addPlot()</h4>
     <p>Adding a plot</p>
-    <pre>&lt;zingchart ref="chart" :config="chartConfig" /&gt;</pre>
+    <pre>&lt;zingchart ref="chart" :data="chartData" /&gt;</pre>
     <pre>
   // 'addplot' is a ZingChart method
   this.$refs.chart.addplot({
@@ -32,7 +32,7 @@
 export default {
   data() {
     return {
-      chartConfig: {
+      chartData: {
         type: "line",
         series: [
           {

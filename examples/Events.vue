@@ -4,11 +4,11 @@
     <p>Every event available to ZingChart is available on the component's instance.</p>
     <zingchart 
       ref="chart" 
-      :config="chartConfig" 
+      :data="chartData" 
       @complete="chartDone" 
       @node_mouseover="nodeInfo" />
 
-    <pre>&lt;zingchart ref="chart" :config="chartConfig" @complete="chartDone" @node_mouseover="nodeInfo" /&gt;</pre>
+    <pre>&lt;zingchart ref="chart" :data="chartData" @complete="chartDone" @node_mouseover="nodeInfo" /&gt;</pre>
 
       <h2>Output from events</h2>
     <h3>Events bound:</h3>
@@ -23,7 +23,7 @@
 export default {
   data() {
     return {
-      chartConfig: {
+      chartData: {
         type: "line",
         series: [
           {

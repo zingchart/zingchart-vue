@@ -2,9 +2,9 @@
   <div>
     <h3>Dynamic config</h3>
     <p>Everytime the configuration object changes, the component automatically re-renders. Below is an example of the dataset and color changing every 2 seconds without any additional code to re-render the chart. </p>
-     <zingchart ref="chart" :config="chartConfig" />
+     <zingchart ref="chart" :data="chartData" />
 <pre>
-&lt;zingchart ref="chart" :config="chartConfig"/&gt;
+&lt;zingchart ref="chart" :data="chartData"/&gt;
 </pre>
 <pre>
   mounted() {
@@ -14,7 +14,7 @@
     }, 2000);
   },
   computed: {
-    chartConfig() {
+    chartData() {
       return {
         type: "bar",
         series: [
@@ -46,7 +46,7 @@ export default {
     }, 2000);
   },
   computed: {
-    chartConfig() {
+    chartData() {
       return {
         type: "bar",
         series: [

@@ -17,7 +17,7 @@ if (!window.ZCVUE) {
 
 export default {
   props: {
-    config: {
+    data: {
       type: Object,
       required: true,
     },
@@ -38,7 +38,7 @@ export default {
     return {
       chartId: null,
       instance: null,
-      chartConfig: null,
+      chartData: null,
       EVENT_NAMES,
       METHOD_NAMES,
     };
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     render() {
-      this.chartConfig = this.$props.config;
+      this.chartData = this.$props.data;
 
       // Set the id for zingchart to render to
       if (this.$props.id) {
@@ -64,12 +64,12 @@ export default {
 
       // Override the user's config series object if provided. Just a shallow override (no deep merge)
       if (this.$props.series) {
-        this.chartConfig['series'] = this.$props.series;
+        this.chartData['series'] = this.$props.series;
       }
 
       const renderObject = {
         id: this.chartId,
-        data: this.chartConfig,
+        data: this.chartData,
         height: this.$props.height,
         width: this.$props.width,
       };
@@ -102,7 +102,7 @@ export default {
     }
   },
   watch: {
-    config: function(val) {
+    data: function(val) {
       window.zingchart.exec(this.chartId, 'setdata', {
         data: val
       });

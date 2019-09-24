@@ -1,12 +1,12 @@
 <template>
   <div>
     <h3>A simple example with a line chart config</h3>
-     <zingchart ref="chart" :config="chartConfig" />
+     <zingchart ref="chart" :data="chartData" />
 <pre>
-&lt;zingchart ref="chart" :config="chartConfig"/&gt;
+&lt;zingchart ref="chart" :data="chartData"/&gt;
 </pre>
 <pre>
-chartConfig: {
+chartData: {
   type: "line",
   series: [
     {
@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      chartConfig: {
+      chartData: {
         type: "line",
         series: [
           {
