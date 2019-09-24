@@ -26,7 +26,7 @@ export default {
       default: DEFAULT_HEIGHT,
     },
     series: {
-      type: Object,
+      type: Array,
       required: false,
     },
     width: {
@@ -38,7 +38,6 @@ export default {
     return {
       chartId: null,
       instance: null,
-      chartData: null,
       EVENT_NAMES,
       METHOD_NAMES,
     };
@@ -47,13 +46,21 @@ export default {
     delete window.ZCVUE.instances[this.chartId];
     window.zingchart.exec(this.chartId, 'destroy');
   },
+  computed: {
+    chartData() {
+      const data = this.$props.data;
+      // Override the user's config series object if provided. Just a shallow override (no deep merge)
+      if (this.$props.series) {
+        data['series'] = this.$props.series;
+      }
+      return data;
+    }
+  },
   mounted() {
     this.render();
   },
   methods: {
     render() {
-      this.chartData = this.$props.data;
-
       // Set the id for zingchart to render to
       if (this.$props.id) {
         this.chartId = this.$props.id;
@@ -61,11 +68,6 @@ export default {
         this.chartId = 'zingchart-vue-' + window.ZCVUE.count++;
       }
       this.$refs.chart.setAttribute('id', this.chartId);
-
-      // Override the user's config series object if provided. Just a shallow override (no deep merge)
-      if (this.$props.series) {
-        this.chartData['series'] = this.$props.series;
-      }
 
       const renderObject = {
         id: this.chartId,
@@ -102,15 +104,15 @@ export default {
     }
   },
   watch: {
-    data: function(val) {
+    data: function() {
       window.zingchart.exec(this.chartId, 'setdata', {
-        data: val
+        data: this.chartData,
       });
     },
     height: function() { this.resize() },
     series: function(val) {
       window.zingchart.exec(this.chartId, 'setseriesdata', {
-        values: val
+        data: this.chartData.series,
       });
     },
     width: function() { this.resize() },
