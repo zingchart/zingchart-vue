@@ -108,7 +108,7 @@ export default {
       });
     },
     height: function() { this.resize() },
-    series: function() {
+    series: function(val) {
       window.zingchart.exec(this.chartId, 'setseriesdata', {
         values: val
       });
