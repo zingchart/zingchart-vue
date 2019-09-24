@@ -10,10 +10,9 @@ Install the zingchart-vue package via npm
 
 `$ npm install zingchart-vue`
 
-## 2, Include the component in your project
+## 2. Include the component in your project
 
 You can either include the zingchart-vue component to your project globally or locally per component
-
 
 ### Globally
 

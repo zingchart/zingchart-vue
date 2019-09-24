@@ -10,7 +10,7 @@
     <h2>Output from events</h2>
     <h3>Events bound:</h3>
     <ul>
-      <li v-for="item in listOfEventListeners">{{item}}</li>
+      <li v-for="(item, index) in listOfEventListeners" :key="index">{{item}}</li>
     </ul>
     <textarea ref="output" cols="50" rows="10"></textarea>
   </div>
@@ -52,10 +52,7 @@ export default {
     addNodes() {
       const newValues = this.$refs.chart
         .getseriesvalues()
-        .map((series, index) => {
-          series.push(Math.floor(Math.random() * 10));
-          return series;
-        });
+        .map((series) => series.push(Math.floor(Math.random() * 10)));
       this.nodeCount++;
       this.$refs.chart.setseriesvalues({
         values: newValues
