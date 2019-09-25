@@ -50,7 +50,7 @@ We reccomend this approach if ZingChart is only included in a few, un-related pa
 The `zingchart-vue` component can be included into template as an element. Below is a simple example of a line chart:
 
 ```html
-<zingchart :config="chartConfig"></zingchart>
+<zingchart :data="chartData"></zingchart>
 ```
 
 ```js
@@ -59,7 +59,7 @@ new Vue({
     ...
     data() {
         return {
-            chartConfig: {
+            chartData: {
                 type: 'line',
                 series: [{
                     values: [4,5,3,3,4,4]
@@ -73,17 +73,17 @@ new Vue({
 
 ## Parameters
 
-### config [object]
+### data [object]
 
 ```html
-<zingchart :config="myConfig" :series="myData"></zingchart>
+<zingchart :data="myData" :series="mySeries"></zingchart>
 ```
 
 ```js
 {
     data() {
         return {
-            myConfig: {
+            myData: {
                 type: 'line',
                 title: {
                     text: 'Hello World',
@@ -104,14 +104,14 @@ The id for the DOM element for ZingChart to attach to. If no id is specified, th
 Accepts an array of series objects, and overrides a series if it was supplied into the config object. Varries by chart type used - Refer to the ZingChart documentation for more details.
 
 ```html
-<zingchart :config="myConfig" :series="myData"></zingchart>
+<zingchart :data="myData" :series="mySeries"></zingchart>
 ```
 
 ```js
 {
     data() {
         return {
-            myConfig: {
+            myData: {
                 type: 'line',
                 title: {
                     text: 'Hello World',
@@ -130,7 +130,7 @@ Accepts an array of series objects, and overrides a series if it was supplied in
 All zingchart events are readily available on the component to listen to. For example, to listen for the 'complete' event when the chart is finished rendering:
 
 ```html
-    <zingchart config="myConfig" @complete="chartCompleted"/>
+    <zingchart :data="myData" @complete="chartCompleted"/>
 ```
 
 ```js
@@ -151,7 +151,7 @@ For a list of all the events that you can listen to, refer to the complete docum
 All zingchart methods are readily available on the component's instance to call. For example, to add a new plot node to the chart:
 
 ```html
-    <zingchart config="myConfig" ref="chart"/>
+    <zingchart :data="myData" ref="chart"/>
 ```
 
 ```js
