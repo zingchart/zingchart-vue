@@ -29,6 +29,10 @@ export default {
       type: Array,
       required: false,
     },
+    theme: {
+      type: Object,
+      required: false,
+    },
     width: {
       type: [String, Number],
       default: DEFAULT_WIDTH,
@@ -76,6 +80,10 @@ export default {
         width: this.$props.width,
       };
 
+      if(this.$props.theme) {
+        renderObject.theme = this.$props.theme;
+      }
+
       // Pipe zingchart specific event listeners
       Object.keys(this.$listeners).forEach(eventName => {
         if (this.EVENT_NAMES.includes(eventName)) {
@@ -110,7 +118,7 @@ export default {
       });
     },
     height: function() { this.resize() },
-    series: function(val) {
+    series: function() {
       window.zingchart.exec(this.chartId, 'setseriesdata', {
         data: this.chartData.series,
       });

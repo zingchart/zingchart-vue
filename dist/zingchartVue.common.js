@@ -169,12 +169,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=d73b5e64&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=bcc1f6d4&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=d73b5e64&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=bcc1f6d4&
 
 // EXTERNAL MODULE: ./node_modules/zingchart/zingchart-es6.min.js
 var zingchart_es6_min = __webpack_require__("5d62");
@@ -339,6 +339,10 @@ if (!window.ZCVUE) {
       default: DEFAULT_HEIGHT,
     },
     series: {
+      type: Array,
+      required: false,
+    },
+    theme: {
       type: Object,
       required: false,
     },
@@ -351,7 +355,6 @@ if (!window.ZCVUE) {
     return {
       chartId: null,
       instance: null,
-      chartData: null,
       EVENT_NAMES: EVENT_NAMES,
       METHOD_NAMES: METHOD_NAMES,
     };
@@ -360,13 +363,21 @@ if (!window.ZCVUE) {
     delete window.ZCVUE.instances[this.chartId];
     window.zingchart.exec(this.chartId, 'destroy');
   },
+  computed: {
+    chartData() {
+      const data = this.$props.data;
+      // Override the user's config series object if provided. Just a shallow override (no deep merge)
+      if (this.$props.series) {
+        data['series'] = this.$props.series;
+      }
+      return data;
+    }
+  },
   mounted() {
     this.render();
   },
   methods: {
     render() {
-      this.chartData = this.$props.data;
-
       // Set the id for zingchart to render to
       if (this.$props.id) {
         this.chartId = this.$props.id;
@@ -375,17 +386,16 @@ if (!window.ZCVUE) {
       }
       this.$refs.chart.setAttribute('id', this.chartId);
 
-      // Override the user's config series object if provided. Just a shallow override (no deep merge)
-      if (this.$props.series) {
-        this.chartData['series'] = this.$props.series;
-      }
-
       const renderObject = {
         id: this.chartId,
         data: this.chartData,
         height: this.$props.height,
         width: this.$props.width,
       };
+
+      if(this.$props.theme) {
+        renderObject.theme = this.$props.theme;
+      }
 
       // Pipe zingchart specific event listeners
       Object.keys(this.$listeners).forEach(eventName => {
@@ -415,15 +425,15 @@ if (!window.ZCVUE) {
     }
   },
   watch: {
-    data: function(val) {
+    data: function() {
       window.zingchart.exec(this.chartId, 'setdata', {
-        data: val
+        data: this.chartData,
       });
     },
     height: function() { this.resize() },
-    series: function(val) {
+    series: function() {
       window.zingchart.exec(this.chartId, 'setseriesdata', {
-        values: val
+        data: this.chartData.series,
       });
     },
     width: function() { this.resize() },
