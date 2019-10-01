@@ -1,6 +1,6 @@
 {
   "name": "zingchart-vue",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A Vue component for ZingChart",
   "author": "ZingSoft Inc",
   "scripts": {

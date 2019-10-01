@@ -66,7 +66,7 @@ export default {
   methods: {
     render() {
       this.$el.style.width = this.$props.width;
-      this.$el.style.height = this.$props.height
+      this.$el.style.height = this.$props.height;
       // Set the id for zingchart to render to
       if (this.$props.id) {
         this.chartId = this.$props.id;

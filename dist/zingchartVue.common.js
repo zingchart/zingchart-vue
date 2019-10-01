@@ -169,12 +169,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=bcc1f6d4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=3658ff89&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=bcc1f6d4&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=3658ff89&
 
 // EXTERNAL MODULE: ./node_modules/zingchart/zingchart-es6.min.js
 var zingchart_es6_min = __webpack_require__("5d62");
@@ -378,6 +378,8 @@ if (!window.ZCVUE) {
   },
   methods: {
     render() {
+      this.$el.style.width = this.$props.width;
+      this.$el.style.height = this.$props.height;
       // Set the id for zingchart to render to
       if (this.$props.id) {
         this.chartId = this.$props.id;
@@ -394,7 +396,7 @@ if (!window.ZCVUE) {
       };
 
       if(this.$props.theme) {
-        renderObject.theme = this.$props.theme;
+        renderObject.defaults = this.$props.theme;
       }
 
       // Pipe zingchart specific event listeners
@@ -418,6 +420,8 @@ if (!window.ZCVUE) {
       });
     },
     resize() {
+      this.$el.style.width = this.$props.width;
+      this.$el.style.height = this.$props.height;
       window.zingchart.exec(this.chartId, 'resize', {
         height: this.$props.height,
         width: this.$props.width,
