@@ -65,6 +65,8 @@ export default {
   },
   methods: {
     render() {
+      this.$el.style.width = this.$props.width;
+      this.$el.style.height = this.$props.height
       // Set the id for zingchart to render to
       if (this.$props.id) {
         this.chartId = this.$props.id;
@@ -81,7 +83,7 @@ export default {
       };
 
       if(this.$props.theme) {
-        renderObject.theme = this.$props.theme;
+        renderObject.defaults = this.$props.theme;
       }
 
       // Pipe zingchart specific event listeners
@@ -105,6 +107,8 @@ export default {
       });
     },
     resize() {
+      this.$el.style.width = this.$props.width;
+      this.$el.style.height = this.$props.height;
       window.zingchart.exec(this.chartId, 'resize', {
         height: this.$props.height,
         width: this.$props.width,

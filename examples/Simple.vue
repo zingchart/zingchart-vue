@@ -1,7 +1,9 @@
 <template>
   <div>
     <h3>A simple example with a line chart config</h3>
-     <zingchart ref="chart" :data="chartData" />
+    <div style="height: 800px;">
+     <zingchart ref="chart" :data="chartData" :width="'100%'" :height="'100%'" />
+    </div>
 <pre>
 &lt;zingchart ref="chart" :data="chartData"/&gt;
 </pre>

@@ -8,11 +8,7 @@
       <a href="#" class="button" @click="activeDemo = 'methods'">Methods</a>
       <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
     </header>
-     <zingchart :data='config' width="500" height="300" :series="series"></zingchart>
     <simple-view v-show="activeDemo === 'simple'"/>
-    <dynamic-view v-show="activeDemo === 'dynamic'"/>
-    <methods-view v-show="activeDemo === 'methods'"/>
-    <events-view v-show="activeDemo === 'events'"/>
   </div>
 </template>
 

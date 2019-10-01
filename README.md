@@ -126,6 +126,15 @@ Accepts an array of series objects, and overrides a series if it was supplied in
 ```
 
 
+### width [string or number] (optional)
+The width of the chart. Defaults to 100%
+
+### height [string or number] (optional)
+The height of the chart. Defaults to 480px.
+
+### theme [object] (optional)
+The theme or 'defaults' object defined by ZingChart. More information available here: https://www.zingchart.com/docs/api/themes
+
 ## Events
 All zingchart events are readily available on the component to listen to. For example, to listen for the 'complete' event when the chart is finished rendering:
 
