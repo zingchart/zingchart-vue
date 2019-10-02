@@ -9,6 +9,9 @@
       <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
     </header>
     <simple-view v-show="activeDemo === 'simple'"/>
+    <dynamic-view v-show="activeDemo === 'dynamic'"/>
+    <methods-view v-show="activeDemo === 'methods'"/>
+    <events-view v-show="activeDemo === 'events'"/>
   </div>
 </template>
 
