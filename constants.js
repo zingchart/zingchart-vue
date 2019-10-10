@@ -80,46 +80,7 @@ const EVENT_NAMES = [
   'source_show'
 ];
 
-const METHOD_NAMES =[
-  'addnode',
-  'addplot',
-  'appendseriesdata',
-  'appendseriesvalues',
-  'getseriesdata',
-  'getseriesvalues',
-  'modifyplot',
-  'removenode',
-  'removeplot',
-  'set3dview',
-  'setnodevalue',
-  'setseriesdata',
-  'setseriesvalues',
-  'exportdata',
-  'getimagedata',
-  'print',
-  'saveasimage',
-  'Feed',
-  'clearfeed',
-  'getinterval',
-  'setinterval',
-  'startfeed',
-  'stopfeed',
-  'getcharttype',
-  'getdata',
-  'getgraphlength',
-  'getnodelength',
-  'getnodevalue',
-  'getobjectinfo',
-  'getplotlength',
-  'getplotvalues',
-  'getrender',
-  'getrules',
-  'getscales',
-  'getversion',
-  'getxyinfo',
-  'get3dview'
-];
-
+const METHOD_NAMES = ["addplot", "appendseriesdata", "appendseriesvalues", "getseriesdata", "getseriesvalues", "modifyplot", "removenode", "removeplot", "set3dview", "setnodevalue", "setseriesdata", "setseriesvalues", "downloadCSV", "downloadXLS", "downloadRAW", "exportdata", "getimagedata", "print", "saveasimage", "exportimage", "addmenuitem", "addscalevalue", "destroy", "load", "modify", "reload", "removescalevalue", "resize", "setdata", "setguide", "update", "clearfeed", "getinterval", "setinterval", "startfeed", "stopfeed", "getcharttype", "getdata", "getgraphlength", "getnodelength", "getnodevalue", "getobjectinfo", "getplotlength", "getplotvalues", "getrender", "getrules", "getscales", "getversion", "getxyinfo", "get3dview", "goback", "goforward", "addnote", "removenote", "updatenote", "addobject", "removeobject", "repaintobjects", "updateobject", "addrule", "removerule", "updaterule", "Selection", "clearselection", "deselect", "getselection", "select", "setselection", "clicknode", "closemodal", "disable", "enable", "exitfullscreen", "fullscreen", "hideguide", "hidemenu", "hideplot/plothide", "legendmaximize", "legendminimize", "openmodal", "showhoverstate", "showguide", "showmenu", "showplot/plotshow", "toggleabout", "togglebugreport", "toggledimension", "togglelegend", "togglesource", "toggleplot", "hidetooltip", "locktooltip", "showtooltip", "unlocktooltip",  "viewall", "zoomin", "zoomout", "zoomto", "zoomtovalues"];
 const DEFAULT_WIDTH = '100%';
 const DEFAULT_HEIGHT = 480;
 
