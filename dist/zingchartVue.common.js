@@ -169,12 +169,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=3658ff89&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"60d55bfc-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=5812e784&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=3658ff89&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=5812e784&
 
 // EXTERNAL MODULE: ./node_modules/zingchart/zingchart-es6.min.js
 var zingchart_es6_min = __webpack_require__("5d62");
@@ -289,7 +289,7 @@ if (!window.ZCVUE) {
   };
 }
 
-/* harmony default export */ var lib_vue_loader_options_ZingChartvue_type_script_lang_js_ = ({
+const ZingChart = {
   props: {
     data: {
       type: Object,
@@ -403,10 +403,12 @@ if (!window.ZCVUE) {
     },
     width: function() { this.resize() },
   }
-});
+};
+let lib_vue_loader_options_ZingChartvue_type_script_lang_js_ZC = window.ZC;
+
 
 // CONCATENATED MODULE: ./ZingChart.vue?vue&type=script&lang=js&
- /* harmony default export */ var ZingChartvue_type_script_lang_js_ = (lib_vue_loader_options_ZingChartvue_type_script_lang_js_); 
+ /* harmony default export */ var ZingChartvue_type_script_lang_js_ = (ZingChart); 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
@@ -521,11 +523,12 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var ZingChart = (component.exports);
+/* harmony default export */ var ZingChart_0 = (component.exports);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport ZC */__webpack_require__.d(__webpack_exports__, "ZC", function() { return lib_vue_loader_options_ZingChartvue_type_script_lang_js_ZC; });
 
 
-/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (ZingChart);
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (ZingChart_0);
 
 
 

@@ -15,7 +15,7 @@ if (!window.ZCVUE) {
   };
 }
 
-export default {
+const ZingChart = {
   props: {
     data: {
       type: Object,
@@ -130,4 +130,6 @@ export default {
     width: function() { this.resize() },
   }
 };
+let ZC = window.ZC;
+export {ZingChart as default, ZC};
 </script>
