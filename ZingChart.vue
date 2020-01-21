@@ -25,6 +25,10 @@ export default {
       type: [String, Number],
       default: DEFAULT_HEIGHT,
     },
+    output: {
+      type: String,
+      default: 'svg',
+    },
     series: {
       type: Array,
       required: false,
@@ -80,6 +84,7 @@ export default {
         data: this.chartData,
         height: this.$props.height,
         width: this.$props.width,
+        output: this.$props.output,
       };
 
       if(this.$props.theme) {
