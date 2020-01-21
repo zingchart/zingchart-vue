@@ -145,7 +145,7 @@ All zingchart events are readily available on the component to listen to. For ex
 ```js
 {
     ...
-    events: {
+    methods: {
         chartCompleted(result) {
             console.log(`The chart ${result.id} finished rendering`);
         }
