@@ -45,6 +45,53 @@ import zingchartVue from 'zingchart-vue';
 
 We reccomend this approach if ZingChart is only included in a few, un-related pages across your application. 
 
+## ZingChart Modules
+
+ZingChart comes bundled with your common chart types such as line, column, pie, and scatter. For additional chart types, you will need to import the additional module file.
+
+For example, adding a depth chart to your vue component will require an additional import. Note, you must import from the `modules-es6` directory in the zingchart package.
+
+```
+import 'zingchart/modules-es6/zingchart-depth.min.js';
+}
+```
+
+Here is a full .vue example for loading a map:
+
+```
+<template>
+  <div style="height:200px">
+    <zingchart :height="'100%'" ref="myChart" 
+               :data="{
+	    shapes: [
+	      {
+	        type: 'zingchart.maps',
+	        options: {
+	          name: 'usa',
+	          ignore: ['AK','HI']
+	        }
+	      }
+	    ]
+	  }" >
+    </zingchart>
+  </div>
+</template>
+
+<script>
+import zingchartVue from 'zingchart-vue';
+import 'zingchart/modules-es6/zingchart-maps.min.js';
+import 'zingchart/modules-es6/zingchart-maps-usa.min.js';
+
+export default {
+  components: {
+    zingchart: zingchartVue,
+  },
+}
+</script>
+```
+
+
+
 ## Usage
 
 The `zingchart-vue` component can be included into template as an element. Below is a simple example of a line chart:
