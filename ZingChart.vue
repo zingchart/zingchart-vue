@@ -5,7 +5,8 @@
 <script>
 // Import the zingchart library to be used globally.
 import 'zingchart';
-import {DEFAULT_WIDTH, DEFAULT_HEIGHT, EVENT_NAMES, METHOD_NAMES} from './constants.js';
+import constants from 'zingchart-constants';
+const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
 
 // One time setup globally to handle all zingchart-vue objects in the app space.
 if (!window.ZCVUE) {
@@ -27,7 +28,7 @@ export default {
     },
     output: {
       type: String,
-      default: 'svg',
+      default: DEFAULT_OUTPUT,
     },
     series: {
       type: Array,
