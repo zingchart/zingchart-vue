@@ -1,5 +1,14 @@
 # zingchart-vue
 
+![](https://img.shields.io/npm/v/zingchart-vue)
+![](https://github.com/zingchart/zingchart-vue/workflows/Build/badge.svg?branch=master)
+![](https://github.com/zingchart/zingchart-vue/workflows/Test/badge.svg?branch=master)
+![](https://img.shields.io/npm/dw/zingchart-vue)
+
+![](https://img.shields.io/david/zingchart/zingchart-vue)
+![](https://img.shields.io/david/peer/zingchart/zingchart-vue)
+![](https://img.shields.io/david/dev/zingchart/zingchart-vue)
+
 Quickly add charts to your Vue application with our ZingChart component
 
 This guide assumes some basic working knowledge of Vue.

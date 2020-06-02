@@ -9,7 +9,18 @@
     "lint": "vue-cli-service lint",
     "dev": "vue serve examples/App.vue"
   },
-  "main": "dist/zingchartVue.common.js",
+  "main": "dist/zingchartVue.common.js",  
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "keywords": [
+    "vue charts",
+    "zingchart",
+    "charts",
+    "vue chart",
+    "vue"
+  ],
   "dependencies": {
     "zingchart": "latest",
     "zingchart-constants": "github:zingchart/zingchart-constants#master"
@@ -27,5 +38,8 @@
     "prettier": "^1.18.2",
     "vue-template-compiler": "^2.6.10"
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT"
 }
