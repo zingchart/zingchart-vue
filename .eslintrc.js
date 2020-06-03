@@ -5,7 +5,6 @@ module.exports = {
     node: true
   },
 
-  extends: ["plugin:vue/essential"],
 
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -16,7 +15,7 @@ module.exports = {
     parser: 'babel-eslint'
   },
 
-  'extends': [
+  extends: [
     'plugin:vue/essential',
     'eslint:recommended'
   ]

@@ -3,8 +3,8 @@
 </template>
 
 <script>
-// Import the zingchart library to be used globally.
-import zingchart from 'zingchart/es6';
+// Import the zingchart library to be used globally (MUST BE DONE EXPLICITLY BEFORE THIS COMPONENT)
+// import zingchart from 'zingchart/es6';
 import constants from 'zingchart-constants';
 const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
 

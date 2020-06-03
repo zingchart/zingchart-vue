@@ -22,6 +22,14 @@ import MethodsView from './Methods.vue';
 import EventsView from './Events.vue';
 import DynamicView from './Dynamic.vue';
 import SimpleView from './Simple.vue';
+
+// Import the zingchart library to be used globally 
+// MUST BE DONE EXPLICITLY BEFORE THIS COMPONENT is registered
+import zingchart from 'zingchart/es6';
+
+zingchart.DEV.TEST = 'hi';
+// ZC.test = 'okay';
+
 Vue.component('zingchart', zingchartVue);
 
 export default {
