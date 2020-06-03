@@ -7,11 +7,13 @@
       <a href="#" class="button" @click="activeDemo = 'dynamic'">Dynamic Config</a>
       <a href="#" class="button" @click="activeDemo = 'methods'">Methods</a>
       <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
+      <a href="#" class="button" @click="activeDemo = 'license'">License</a>
     </header>
     <simple-view v-show="activeDemo === 'simple'"/>
     <dynamic-view v-show="activeDemo === 'dynamic'"/>
     <methods-view v-show="activeDemo === 'methods'"/>
     <events-view v-show="activeDemo === 'events'"/>
+    <license-view v-show="activeDemo === 'license'"/>
   </div>
 </template>
 
@@ -22,6 +24,9 @@ import MethodsView from './Methods.vue';
 import EventsView from './Events.vue';
 import DynamicView from './Dynamic.vue';
 import SimpleView from './Simple.vue';
+import LicenseView from './License.vue';
+
+
 Vue.component('zingchart', zingchartVue);
 
 export default {
@@ -30,6 +35,7 @@ export default {
     DynamicView,
     MethodsView,
     EventsView,
+    LicenseView,
   },
   data() {
     return {
