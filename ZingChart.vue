@@ -136,4 +136,10 @@ export default {
     width: function() { this.resize() },
   }
 };
+
+// assign window level constants to local vars for export
+let ZC = window.ZC;
+
+// export ZingChart react class, ZC and zingchart window objects
+export {ZC, zingchart};
 </script>
