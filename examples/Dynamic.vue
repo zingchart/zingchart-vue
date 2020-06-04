@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import 'zingchart/es6';
+
 export default {
   mounted() {
     setInterval( () => {

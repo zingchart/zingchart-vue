@@ -7,11 +7,13 @@
       <a href="#" class="button" @click="activeDemo = 'dynamic'">Dynamic Config</a>
       <a href="#" class="button" @click="activeDemo = 'methods'">Methods</a>
       <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
+      <a href="#" class="button" @click="activeDemo = 'license'">License</a>
     </header>
     <simple-view v-show="activeDemo === 'simple'"/>
     <dynamic-view v-show="activeDemo === 'dynamic'"/>
     <methods-view v-show="activeDemo === 'methods'"/>
     <events-view v-show="activeDemo === 'events'"/>
+    <license-view v-show="activeDemo === 'license'"/>
   </div>
 </template>
 
@@ -22,14 +24,10 @@ import MethodsView from './Methods.vue';
 import EventsView from './Events.vue';
 import DynamicView from './Dynamic.vue';
 import SimpleView from './Simple.vue';
+import LicenseView from './License.vue';
 
-// Import the zingchart library to be used globally 
-// MUST BE DONE EXPLICITLY BEFORE THIS COMPONENT is registered
-import zingchart from 'zingchart/es6';
-
-zingchart.DEV.TEST = 'hi';
-// ZC.test = 'okay';
-
+// register just the component and load ZingChart at the component level
+// OR loa Zingchart at the global level if many pages use charts.
 Vue.component('zingchart', zingchartVue);
 
 export default {
@@ -38,6 +36,7 @@ export default {
     DynamicView,
     MethodsView,
     EventsView,
+    LicenseView,
   },
   data() {
     return {
