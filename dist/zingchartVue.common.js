@@ -154,12 +154,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"30ef7657-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=4adae2fe&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2a867670-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=1ff171a6&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=4adae2fe&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=1ff171a6&
 
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/events.js
 /* harmony default export */ var events = ([
@@ -445,6 +445,8 @@ const {DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT} = misc;
 // import constants that define methods, events and default rendering parameters
 
 const { DEFAULT_WIDTH: lib_vue_loader_options_ZingChartvue_type_script_lang_js_DEFAULT_WIDTH, DEFAULT_HEIGHT: lib_vue_loader_options_ZingChartvue_type_script_lang_js_DEFAULT_HEIGHT, DEFAULT_OUTPUT: lib_vue_loader_options_ZingChartvue_type_script_lang_js_DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = main;
+
+console.log(main);
 
 // One time setup globally to handle all zingchart-vue objects in the app space.
 if (!window.ZCVUE) {

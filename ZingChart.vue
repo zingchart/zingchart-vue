@@ -10,6 +10,8 @@
 import constants from 'zingchart-constants';
 const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
 
+console.log(constants);
+
 // One time setup globally to handle all zingchart-vue objects in the app space.
 if (!window.ZCVUE) {
   window.ZCVUE = {
