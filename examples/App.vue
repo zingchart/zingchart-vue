@@ -8,12 +8,14 @@
       <a href="#" class="button" @click="activeDemo = 'methods'">Methods</a>
       <a href="#" class="button" @click="activeDemo = 'events'">Events</a>
       <a href="#" class="button" @click="activeDemo = 'license'">License</a>
+      <a href="#" class="button" @click="activeDemo = 'modules'">Modules</a>
     </header>
     <simple-view v-show="activeDemo === 'simple'"/>
     <dynamic-view v-show="activeDemo === 'dynamic'"/>
     <methods-view v-show="activeDemo === 'methods'"/>
     <events-view v-show="activeDemo === 'events'"/>
     <license-view v-show="activeDemo === 'license'"/>
+    <modules-view v-show="activeDemo === 'modules'"/>
   </div>
 </template>
 
@@ -25,6 +27,7 @@ import EventsView from './Events.vue';
 import DynamicView from './Dynamic.vue';
 import SimpleView from './Simple.vue';
 import LicenseView from './License.vue';
+import ModulesView from './Modules.vue';
 
 // register just the component and load ZingChart at the component level
 // OR loa Zingchart at the global level if many pages use charts.
@@ -37,6 +40,7 @@ export default {
     MethodsView,
     EventsView,
     LicenseView,
+    ModulesView,
   },
   data() {
     return {
