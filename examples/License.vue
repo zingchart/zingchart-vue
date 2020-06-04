@@ -19,14 +19,14 @@ chartData: {
 </template>
 
 <script>
-import {ZC, zingchart} from '../ZingChart.vue';
+import zingchart from 'zingchart/es6';
 
 // zingchart object for performance flags
 zingchart.DEV.KEEPSOURCE = 0; // prevents lib from storing the original data package
 zingchart.DEV.COPYDATA = 0; // prevents lib from creating a copy of the data package 
 
 // ZC object for license key
-ZC.LICENSEKEY = ['abcdefghijklmnopqrstuvwxy'];
+zingchart.LICENSE = ['abcdefghijklmnopqrstuvwxy'];
 
 
 export default {

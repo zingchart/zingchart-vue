@@ -3,10 +3,14 @@
 </template>
 
 <script>
-// Import the zingchart library to be used globally.
-import zingchart from 'zingchart/es6';
+// Import the zingchart library to be used globally (MUST BE DONE EXPLICITLY BEFORE THIS COMPONENT)
+// import zingchart from 'zingchart/es6';
+
+// import constants that define methods, events and default rendering parameters
 import constants from 'zingchart-constants';
 const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
+
+console.log(constants);
 
 // One time setup globally to handle all zingchart-vue objects in the app space.
 if (!window.ZCVUE) {
@@ -136,10 +140,4 @@ export default {
     width: function() { this.resize() },
   }
 };
-
-// assign window level constants to local vars for export
-let ZC = window.ZC;
-
-// export ZingChart react class, ZC and zingchart window objects
-export {ZC, zingchart};
 </script>

@@ -10,7 +10,8 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-![](https://d2ddoduugvun08.cloudfront.net/items/3D0r3t2z083W2K0m3t39/Screen%20Recording%202020-06-03%20at%2004.08%20PM.gif?X-CloudApp-Visitor-Id=3179966)
+![](https://d2ddoduugvun08.cloudfront.net/items/2u3R031j3O3M2A3c3V0w/Screen%20Recording%202020-06-04%20at%2002.24%20PM.gif?X-CloudApp-Visitor-Id=3179966)
+
 
 ## Quickstart guide
 
@@ -24,12 +25,24 @@ Install the `zingchart-vue` package via npm
 
 `npm install zingchart-vue`
 
+## 2. Include the `zinchart` package in your project
 
-## 2. Include the component in your project 
+The `zingchart` package is a **DIRECT** dependency of `zingchart-vue` but you can also update this package outside of this component. Meaning the wrapper is no longer tied to a ZingChart library version, but just the component itself.
 
-You can either include the `zingchart-vue` component to your project globally or locally per component. **DO NOT HAVE to import zingchart since it is a direct dependency of `zingchart-vue`**
+You can import the library like so:
+
+```javascript
+// import the es6 version
+import 'zingchart/es6';
+```
+
+## 3. Include the component in your project 
+
+You can either include the `zingchart-vue` component to your project globally or locally per component. **Import the component AFTER ZingChart since it is a DIRECT dependency.**
 
 ```js
+// import the es6 version
+import 'zingchart/es6';
 // import the component AFTER ZingChart since it is a DIRECT dependency
 import zingchartVue from 'zingchart-vue';
 ```
@@ -40,20 +53,44 @@ In your main app file, add the following lines of code:
 
 ```js
 import Vue from 'vue';
+// import the es6 version
+import 'zingchart/es6';
 import zingchartVue from 'zingchart-vue';
 
 // install globally to app
 Vue.component('zingchart', zingchartVue)
 ```
 
-This will register the zingchart component globally throughout your application. While the easiest installation option, this will load ZingChart immediately on your user's first load of the application - regardless if a chart is on the first page or not. We reccomend this approach if ZingChart is used heavily across multiple pages.
+This will register the zingchart component globally throughout your application. While the easiest installation option, this will load ZingChart immediately on your user's first load of the application - regardless if a chart is on the first page or not. We recommend this approach if ZingChart is used heavily across multiple pages.
 
+
+
+### Globally and locally
+
+You can also register the `zingChartVue` component globally and then import just `zingchart/es6` locally per each component that uses charts. 
+
+```js
+import Vue from 'vue';
+import zingchartVue from 'zingchart-vue';
+
+// install globally to app
+Vue.component('zingchart', zingchartVue)
+```
+
+Then inside the component you import the `zingchart/es6` library.
+
+```js
+import 'zingchart/es6';
+
+export default {...}
+```
 
 ### Locally per component
 
 In each component where ZingChart is being used, include the following in your component's configuration:
 
 ```js
+import 'zingchart/es6';
 import zingchartVue from 'zingchart-vue';
 
 {
@@ -74,10 +111,9 @@ ZingChart comes bundled with your common chart types such as line, column, pie, 
 For example, adding a depth chart to your vue component will require an additional import. Note, you must import from the `modules-es6` directory in the zingchart package.
 
 ```js
+import 'zingchart/es6';
 // explicitly import the module
 import 'zingchart/modules-es6/zingchart-depth.min.js';
-...
-import zingchartVue from 'zingchart-vue';
 }
 ```
 
@@ -103,34 +139,33 @@ Here is a full .vue example for loading a map:
 </template>
 
 <script>
+// import library
+import 'zingchart/es6';
+// import chart modules used on that page
 import 'zingchart/modules-es6/zingchart-maps.min.js';
 import 'zingchart/modules-es6/zingchart-maps-usa.min.js';
 
-import zingchartVue from 'zingchart-vue';
-
 export default {
-  components: {
-    zingchart: zingchartVue,
-  },
+  ...
 }
 </script>
 ```
 
 
-### `ZC` and `zingchart` Global Objects
+### `zingchart` Global Objects
 
-If you need access to the `window.ZC` and `window.zingchart` objects we have
-exported those as well. Here is how to import them.
+If you need access to the `window.zingchart` objects for licensing or development flags.
 
 ```javascript
-import {default as zingchartVue, ZC, zingchart}  from 'zingchart-vue';
+import zingchart from 'zingchart/es6';
+import zingchartVue from 'zingchart-vue';
 
 // zingchart object for performance flags
 zingchart.DEV.KEEPSOURCE = 0; // prevents lib from storing the original data package
 zingchart.DEV.COPYDATA = 0; // prevents lib from creating a copy of the data package 
 
 // ZC object for license key
-ZC.LICENSEKEY = ['abcdefghijklmnopqrstuvwxy'];
+zingchart.LICENSE = ['abcdefghijklmnopqrstuvwxy'];
 
 export default {
   components: {
@@ -138,6 +173,7 @@ export default {
   },
 }
 ```
+
 
 ## Usage
 
@@ -197,12 +233,11 @@ The configuration object to pass to the chart. This can be a `graphset` object (
 
 ### `series` [array] (optional)
 
-Accepts an array of series objects, and overrides a series if it was supplied into the config object. Varies by chart type used - Refer to the ZingChart documentation for more details.
+Accepts an array of series objects, and overrides a series if it was supplied into the config object. Varries by chart type used - Refer to the ZingChart documentation for more details.
 
 ### `id` [string] (optional)
 
 The id for the DOM element for ZingChart to attach to. If no id is specified, the id will be autogenerated in the form of zingchart-auto-#
-
 
 ### `output` [string] (optional)
 

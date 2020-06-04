@@ -19,6 +19,8 @@ chartData: {
 </template>
 
 <script>
+import 'zingchart/es6';
+
 export default {
   data() {
     return {
