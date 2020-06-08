@@ -1,10 +1,9 @@
 {
   "name": "zingchart-vue",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "ZingChart Vue Component wrapper to allow native vue syntax for javascript charts, chart events, chart methods and chart styling.",
   "author": "ZingSoft Inc",
   "scripts": {
-    "preinstall": "npm install -g conventional-changelog-cli",
     "commit": "git-cz",
     "build": "vue-cli-service build --target lib --name zingchartVue ZingChart.vue",
     "dev": "vue serve examples/App.vue",
