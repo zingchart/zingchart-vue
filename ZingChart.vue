@@ -10,7 +10,6 @@
 import constants from 'zingchart-constants';
 const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
 
-console.log(constants);
 
 // One time setup globally to handle all zingchart-vue objects in the app space.
 if (!window.ZCVUE) {
@@ -45,6 +44,10 @@ export default {
     width: {
       type: [String, Number],
       default: DEFAULT_WIDTH,
+    },
+    modules: {
+      type: [String, Array],
+      required: false
     }
   },
   data() {
@@ -91,6 +94,9 @@ export default {
         width: this.$props.width,
         output: this.$props.output,
       };
+      if(this.$props.modules) {
+        renderObject.modules = this.$props.modules;
+      }
 
       if(this.$props.theme) {
         renderObject.defaults = this.$props.theme;
