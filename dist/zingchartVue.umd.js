@@ -163,12 +163,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a4579df-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=9b447186&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a4579df-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=834e9aba&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=9b447186&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=834e9aba&
 
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/events.js
 /* harmony default export */ var events = ([
@@ -542,7 +542,6 @@ if (!window.ZCVUE) {
       if(this.$props.modules) {
         renderObject.modules = this.$props.modules;
       }
-
 
       if(this.$props.theme) {
         renderObject.defaults = this.$props.theme;
