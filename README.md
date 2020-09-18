@@ -258,6 +258,9 @@ The theme or 'defaults' object defined by ZingChart. More information available 
 ### modules [string or array] (optional)
 An option to add the name of modules being loaded, into ZingChart's render object. Necessary for certain modules including the 'scalableYAxis'.
 
+### forceRender 
+The addition of this property will force ZingChart to re-render on all configuration changes. This isn't optimally performant, but some ZingChart features will require a full re-render of the chart, rather than an internal data update change. Only use this option when necessary.
+
 
 ## Events
 

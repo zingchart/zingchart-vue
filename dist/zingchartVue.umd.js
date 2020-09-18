@@ -163,12 +163,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3a4579df-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=834e9aba&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b998b2b6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=b26785ee&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=834e9aba&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=b26785ee&
 
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/events.js
 /* harmony default export */ var events = ([
@@ -474,6 +474,10 @@ if (!window.ZCVUE) {
       type: [String, Number],
       default: lib_vue_loader_options_ZingChartvue_type_script_lang_js_DEFAULT_HEIGHT,
     },
+    id: {
+      type: [String],
+      required: false,
+    },
     output: {
       type: String,
       default: lib_vue_loader_options_ZingChartvue_type_script_lang_js_DEFAULT_OUTPUT,
@@ -493,14 +497,19 @@ if (!window.ZCVUE) {
     modules: {
       type: [String, Array],
       required: false
+    },
+    forceRender: {
+      type: String,
     }
   },
   data() {
     return {
       chartId: null,
       instance: null,
+      forceRenderOnChange: false,
       EVENT_NAMES,
       METHOD_NAMES,
+      renderObject: null,
     };
   },
   destroyed() {
@@ -522,6 +531,7 @@ if (!window.ZCVUE) {
   },
   methods: {
     render() {
+      this.forceRenderOnChange = typeof this.$props.forceRender !== 'undefined';
       this.$el.style.width = this.$props.width;
       this.$el.style.height = this.$props.height;
       // Set the id for zingchart to render to
@@ -532,7 +542,7 @@ if (!window.ZCVUE) {
       }
       this.$refs.chart.setAttribute('id', this.chartId);
 
-      const renderObject = {
+      this.renderObject = {
         id: this.chartId,
         data: this.chartData,
         height: this.$props.height,
@@ -540,11 +550,11 @@ if (!window.ZCVUE) {
         output: this.$props.output,
       };
       if(this.$props.modules) {
-        renderObject.modules = this.$props.modules;
+        this.renderObject.modules = this.$props.modules;
       }
 
       if(this.$props.theme) {
-        renderObject.defaults = this.$props.theme;
+        this.renderObject.defaults = this.$props.theme;
       }
 
       // Pipe zingchart specific event listeners
@@ -558,7 +568,7 @@ if (!window.ZCVUE) {
       });
 
       // Render the chart
-      window.zingchart.render(renderObject);
+      window.zingchart.render(this.renderObject);
 
       // Apply all of ZingChart's methods directly to the Vue instance
       this.METHOD_NAMES.forEach(name => {
@@ -578,9 +588,14 @@ if (!window.ZCVUE) {
   },
   watch: {
     data: function() {
-      window.zingchart.exec(this.chartId, 'setdata', {
-        data: this.chartData,
-      });
+      if(this.forceRenderOnChange) {
+        this.renderObject.data = this.chartData;
+        window.zingchart.render(this.renderObject);
+      } else {
+        window.zingchart.exec(this.chartId, 'setdata', {
+          data: this.chartData,
+        });
+      }
     },
     height: function() { this.resize() },
     series: function() {

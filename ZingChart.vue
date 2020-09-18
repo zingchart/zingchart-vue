@@ -29,6 +29,10 @@ export default {
       type: [String, Number],
       default: DEFAULT_HEIGHT,
     },
+    id: {
+      type: [String],
+      required: false,
+    },
     output: {
       type: String,
       default: DEFAULT_OUTPUT,
@@ -48,14 +52,19 @@ export default {
     modules: {
       type: [String, Array],
       required: false
+    },
+    forceRender: {
+      type: String,
     }
   },
   data() {
     return {
       chartId: null,
       instance: null,
+      forceRenderOnChange: false,
       EVENT_NAMES,
       METHOD_NAMES,
+      renderObject: null,
     };
   },
   destroyed() {
@@ -77,6 +86,7 @@ export default {
   },
   methods: {
     render() {
+      this.forceRenderOnChange = typeof this.$props.forceRender !== 'undefined';
       this.$el.style.width = this.$props.width;
       this.$el.style.height = this.$props.height;
       // Set the id for zingchart to render to
@@ -87,7 +97,7 @@ export default {
       }
       this.$refs.chart.setAttribute('id', this.chartId);
 
-      const renderObject = {
+      this.renderObject = {
         id: this.chartId,
         data: this.chartData,
         height: this.$props.height,
@@ -95,11 +105,11 @@ export default {
         output: this.$props.output,
       };
       if(this.$props.modules) {
-        renderObject.modules = this.$props.modules;
+        this.renderObject.modules = this.$props.modules;
       }
 
       if(this.$props.theme) {
-        renderObject.defaults = this.$props.theme;
+        this.renderObject.defaults = this.$props.theme;
       }
 
       // Pipe zingchart specific event listeners
@@ -113,7 +123,7 @@ export default {
       });
 
       // Render the chart
-      window.zingchart.render(renderObject);
+      window.zingchart.render(this.renderObject);
 
       // Apply all of ZingChart's methods directly to the Vue instance
       this.METHOD_NAMES.forEach(name => {
@@ -133,9 +143,14 @@ export default {
   },
   watch: {
     data: function() {
-      window.zingchart.exec(this.chartId, 'setdata', {
-        data: this.chartData,
-      });
+      if(this.forceRenderOnChange) {
+        this.renderObject.data = this.chartData;
+        window.zingchart.render(this.renderObject);
+      } else {
+        window.zingchart.exec(this.chartId, 'setdata', {
+          data: this.chartData,
+        });
+      }
     },
     height: function() { this.resize() },
     series: function() {
