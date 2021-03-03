@@ -38,7 +38,7 @@ You can import the library like so:
 
 ```javascript
 // import the es6 version
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 ```
 
 ## 3. Include the component in your project 
@@ -47,7 +47,7 @@ You can either include the `zingchart-vue` component to your project globally or
 
 ```js
 // import the es6 version
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 // import the component AFTER ZingChart since it is a DIRECT dependency
 import zingchartVue from 'zingchart-vue';
 ```
@@ -59,7 +59,7 @@ In your main app file, add the following lines of code:
 ```js
 import Vue from 'vue';
 // import the es6 version
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 import zingchartVue from 'zingchart-vue';
 
 // install globally to app
@@ -72,7 +72,7 @@ This will register the zingchart component globally throughout your application.
 
 ### Globally and locally
 
-You can also register the `zingChartVue` component globally and then import just `zingchart/zingchart-es6` locally per each component that uses charts. 
+You can also register the `zingChartVue` component globally and then import just `zingchart/es6` locally per each component that uses charts. 
 
 ```js
 import Vue from 'vue';
@@ -85,7 +85,7 @@ Vue.component('zingchart', zingchartVue)
 Then inside the component you import the `zingchart/zingchart-es6` library.
 
 ```js
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 
 export default {...}
 ```
@@ -95,7 +95,7 @@ export default {...}
 In each component where ZingChart is being used, include the following in your component's configuration:
 
 ```js
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 import zingchartVue from 'zingchart-vue';
 
 {
@@ -116,7 +116,7 @@ ZingChart comes bundled with your common chart types such as line, column, pie, 
 For example, adding a depth chart to your vue component will require an additional import. Note, you must import from the `modules-es6` directory in the zingchart package.
 
 ```js
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 // explicitly import the module
 import 'zingchart/modules-es6/zingchart-depth.min.js';
 }
@@ -145,7 +145,7 @@ Here is a full .vue example for loading a map:
 
 <script>
 // import library
-import 'zingchart/zingchart-es6';
+import 'zingchart/es6';
 // import chart modules used on that page
 import 'zingchart/modules-es6/zingchart-maps.min.js';
 import 'zingchart/modules-es6/zingchart-maps-usa.min.js';
@@ -162,7 +162,7 @@ export default {
 If you need access to the `window.zingchart` objects for licensing or development flags.
 
 ```javascript
-import zingchart from 'zingchart/zingchart-es6';
+import zingchart from 'zingchart/es6';
 import zingchartVue from 'zingchart-vue';
 
 // zingchart object for performance flags
