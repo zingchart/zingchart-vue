@@ -96,49 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "f6fd":
-/***/ (function(module, exports) {
-
-// document.currentScript polyfill by Adam Miller
-
-// MIT license
-
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
-
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
-
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
-
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
-
-          // If no match, return null
-          return null;
-        }
-      }
-    });
-  }
-})(document);
-
-
-/***/ }),
-
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -150,9 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (true) {
-    __webpack_require__("f6fd")
-  }
+  if (false) {}
 
   var i
   if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
@@ -163,236 +118,265 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"b998b2b6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=b26785ee&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"chart"})}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3183b948-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??ref--5!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=template&id=c3629ee4&
+var render = function render(){var _vm=this,_c=_vm._self._c;return _c('div',{ref:"chart"})
+}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=b26785ee&
+// CONCATENATED MODULE: ./ZingChart.vue?vue&type=template&id=c3629ee4&
 
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/events.js
 /* harmony default export */ var events = ([
-  'about_hide',
-  'about_show',
-  'animation_end',
-  'animation_start',
-  'animation_step',
-  'beforedestroy',
-  'bugreport_hide',
-  'bugreport_show',
-  'click',
-  'complete',
-  'data_export',
-  'dataexport',
-  'dataload',
-  'dataparse',
-  'dataready',
-  'destroy',
-  'dimension_change',
-  'error',
-  'feed_clear',
-  'feed_interval_modify',
-  'feed_start',
-  'feed_stop',
-  'gcomplete',
-  'gload',
-  'gparse',
-  'guide_mousemove',
-  'guide_mouseout',
-  'guide_mouseout',
-  'heatmap.mousemove',
   'history_back',
   'history_forward',
-  'image_save',
-  'label_click',
-  'label_mousedown',
-  'label_mouseout',
-  'label_mouseover',
-  'label_mouseup',
-  'legend_hide',
-  'legend_item_click',
-  'legend_item_mousemove',
-  'legend_item_mouseout',
-  'legend_item_mouseout',
-  'legend_item_mouseover',
-  'legend_marker_click',
-  'legend_marker_click',
-  'legend_maximize',
-  'legend_minimize',
-  'legend_minimize_click',
-  'legend_pagination_click',
-  'legend_show',
-  'legend-drag_mousedown',
-  'lens_hide',
-  'lens_show',
-  'load',
-  'maps.zoom',
-  'menu_item_click',
-  'modify',
+  'destroy',
+  'beforedestroy',
+  'animation_step',
+  'animation_start',
+  'animation_end',
+  'guide_mouseout',
+  'guide_mousemove',
+  'dataload',
+  'dataparse',
   'modulesready',
-  'mousewheel',
-  'node_add',
-  'node_click',
-  'node_deselect',
-  'node_doubleclick',
-  'node_mousedown',
-  'node_mouseout',
-  'node_mouseover',
-  'node_mouseup',
-  'node_remove',
-  'node_select',
-  'node_set',
-  'objectsinit',
-  'objectsready',
-  'overscroll',
-  'plot_add',
-  'plot_click',
-  'plot_deselect',
-  'plot_doubleclick',
-  'plot_hide',
-  'plot_modify',
-  'plot_mouseout',
-  'plot_mouseover',
-  'plot_remove',
-  'plot_select',
-  'plot_show',
-  'postzoom',
-  'print',
-  'reload',
-  'render',
+  'dataready',
   'resize',
+  'swipe',
+  'mousewheel',
+  'render',
+  'complete',
+  'load',
+  'about_show',
+  'about_hide',
+  'error',
+  'reload',
+  'menu_item_click',
+  'beforezoom',
+  'node_mousedown',
+  'node_mouseover',
+  'node_mouseout',
+  'node_mouseup',
+  'plot_mouseout',
+  'plot_mouseup',
+  'node_click',
+  'plot_click',
+  'node_doubleclick',
+  'plot_doubleclick',
+  'gload',
+  'gcomplete',
+  'maps.zoom',
+  'plot_add',
+  'plot_remove',
+  'modify',
+  'plot_modify',
+  'node_set',
+  'node_add',
+  'node_remove',
   'setdata',
-  'shape_click',
+  'legend_minimize',
+  'legend_hide',
+  'legend_maximize',
+  'legend_show',
+  'source_show',
+  'source_hide',
+  'dataexport',
+  'legend_mouseover',
+  'legend_mouseout',
+  'legend_item_click',
+  'legend_marker_click',
+  'shape_mouseover',
   'shape_mousedown',
   'shape_mouseout',
-  'shape_mouseover',
   'shape_mouseup',
-  'source_hide',
-  'source_show',
-  'swipe',
-  'touchemove',
-  'touchend',
-  'touchstart',
+  'shape_mousemove',
+  'shape_click',
+  'shape_dblclick',
+  'label_mouseover',
+  'label_mousedown',
+  'label_mouseout',
+  'label_mouseup',
+  'label_mousemove',
+  'label_click',
+  'label_dblclick',
+  'feed_clear',
+  'feed_step',
+  'feed_interval_modify',
+  'feed_stop',
+  'feed_start',
+  'zoom',
+  'postzoom',
+  'zingchart.plugins.dragging.update',
+  'zingchart.plugins.dragging.complete',
+  'heatmap.mousemove',
   'zingchart.plugins.selection-tool.mouseup',
   'zingchart.plugins.selection-tool.selection',
-  'zoom'
+  'zingchart.plugins.selection-tool.beforeselection'
 ]);
-
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/methods.js
 /* harmony default export */ var methods = ([
-  'addgraph',
-  'addmenuitem',
-  'addnode',
-  'addnote',
-  'addobject',
-  'addplot',
-  'addrule',
-  'addscalevalue',
-  'appendseriesdata',
-  'appendseriesvalues',
-  'clearfeed',
-  'clearscroll',
-  'clearselection',
-  'clicknode',
-  'clicknode',
-  'closemodal',
-  'closemodal',
-  'destroy/zcdestroy',
-  'disable',
-  'downloadCSV',
-  'downloadRAW',
-  'downloadXLS',
-  'exitfullscreen',
-  'exportdata',
-  'exportimage',
-  'fullscreen',
-  'get3dview',
-  'getbubblesize',
-  'getcharttype',
-  'getdata',
-  'getgraphlength',
-  'getimagedata',
-  'getinterval',
-  'getnodelength',
-  'getnodevalue',
-  'getobjectinfo',
-  'getoriginaljson',
-  'getpage',
-  'getplotlength',
-  'getplotvalues',
-  'getrender',
-  'getrules',
-  'getscaleinfo',
-  'getscales',
-  'getselection',
-  'getseriesdata',
-  'getseriesdata',
-  'getseriesvalues',
-  'getversion',
-  'getxyinfo',
+  'zingchart.exec',
   'goback',
   'goforward',
-  'hideguide',
+  'showmenu',
   'hidemenu',
-  'hideplot/plothide',
-  'hidetooltip',
-  'legendmaximize',
-  'legendminimize',
-  'legendscroll',
+  'destroy',
+  'getrender',
+  'clear',
+  'reload',
   'load',
-  'loadstorage',
-  'locktooltip',
-  'mapdata',
-  'mapdata',
-  'modify',
-  'modifyplot',
+  'enable',
+  'disable',
+  'closemodal',
   'openmodal',
   'print',
-  'reload',
-  'removegraph',
-  'removenode',
-  'removenote',
-  'removeobject',
-  'removeplot',
-  'removerule',
-  'removescalevalue',
-  'repaintobjects',
+  'fullscreen',
+  'exitfullscreen',
   'resize',
-  'saveasimage',
-  'set3dview',
-  'setcharttype',
-  'setdata',
-  'setguide',
-  'setinterval',
-  'setmode',
-  'setnodevalue',
-  'setpage',
-  'setscalevalues',
-  'setselection',
-  'setseriesdata',
-  'setseriesvalues',
-  'showhoverstate',
-  'showmenu',
-  'showplot/plotshow',
+  'plothide',
+  'showguide',
+  'hideguide',
   'showtooltip',
+  'hidetooltip',
+  'clicknode',
+  'locktooltip',
+  'unlocktooltip',
+  'showhoverstate',
+  'showplot',
+  'togglesource',
+  'togglebugreport',
+  'toggleabout',
+  'toggleplot',
+  'getcharttype',
+  'getversion',
+  'get3dview',
+  'set3dview',
+  'getpage',
+  'setpage',
+  'unbinddocument',
+  'addmenuitem',
+  'resetguide',
+  'setguide',
+  'zingchart.render',
+  'zingchart.maps.getMapByGraphIndex',
+  'zingchart.maps.zoomIn',
+  'zingchart.maps.zoomOut',
+  'zingchart.maps.destroyMap',
+  'zingchart.maps.setView',
+  'zingchart.maps.viewAll',
+  'zingchart.maps.zoomToItem',
+  'zingchart.maps.zoomTo',
+  'zingchart.maps.getInfo',
+  'zingchart.maps.getItems',
+  'zingchart.maps.getItemInfo',
+  'zingchart.maps.XY',
+  'zingchart.maps.getLonLat',
+  'clearscroll',
+  'getbubblesize',
+  'getscaleinfo',
+  'getobjectinfo',
+  'getxyinfo',
+  'update',
+  'setcharttype',
+  'addgraph',
+  'addplot',
+  'removeplot',
+  'modify',
+  'modifyplot',
+  'setnodevalue',
+  'setscalevalues',
+  'addscalevalue',
+  'removescalevalue',
+  'addnode',
+  'removenode',
+  'setdata',
+  'getseriesdata',
+  'setseriesdata',
+  'appendseriesdata',
+  'getseriesvalues',
+  'setseriesvalues',
+  'appendseriesvalues',
+  'togglelegend',
+  'legendminimize',
+  'legendmaximize',
+  'legendscroll',
+  'toggledimension',
+  'getdata',
+  'getoriginaljson',
+  'getgraphlength',
+  'getplotlength',
+  'getscales',
+  'getnodelength',
+  'getnodevalue',
+  'getplotvalues',
+  'getimagedata',
+  'exportimage',
+  'saveasimage',
+  'exportdata',
+  'downloadCSV',
+  'downloadXLS',
+  'downloadRAW',
+  'viewDataTable',
+  'addobject',
+  'removeobject',
+  'updateobject',
+  'repaintobjects',
+  'getallobjects',
+  'getobjectsbyclass',
+  'getlabelinfo',
+  'getshapeinfo',
+  'setobjectsmode',
+  'clearfeed',
+  'getinterval',
+  'setinterval',
   'startfeed',
   'stopfeed',
-  'togglebugreport',
-  'toggledimension',
-  'togglelegend',
-  'toggleplot',
-  'togglesource',
-  'unbinddocument',
-  'unlocktooltip',
-  'update',
-  'updatenote',
-  'updateobject',
-  'updaterule',
-  'viewDataTable',
+  'clearselection',
+  'getselection',
+  'setselection',
+  'select',
+  'deselect',
+  'getzoom',
+  'pan',
   'zoomin',
   'zoomout',
   'zoomto',
-  'zoomtovalues'
+  'zoomtovalues',
+  'viewall',
+  'removenote',
+  'updatenote',
+  'getnotes',
+  'addnote',
+  'addmarker',
+  'updatemarker',
+  'removemarker',
+  'addrule',
+  'removerule',
+  'updaterule',
+  'getrules',
+  'bubblepack.setdata',
+  'calendar_setvalues',
+  'colorscale.setvalue',
+  'colorscale.update',
+  'colorscale.clear',
+  'colorscale.getinfo',
+  'heatmap.setdata',
+  'zingchart.maps.loadGeoJSON',
+  'zingchart.maps.loadTopoJSON',
+  'resetscales',
+  'resetsetseriesdata',
+  'getscaleminmax',
+  'tree.addnode',
+  'tree.removenode',
+  'tree.getdata',
+  'tree.set',
+  'tree.addlink',
+  'tree.removelink',
+  'treemap.updateNode',
+  'treemap.addNode',
+  'treemap.removeNode',
+  'zingchart.bind',
+  'zingchart.unbind'
 ]);
 
 // CONCATENATED MODULE: ./node_modules/zingchart-constants/markers.js
@@ -443,10 +427,6 @@ const {DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT} = misc;
   DEFAULT_OUTPUT,
 });
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./ZingChart.vue?vue&type=script&lang=js&
-//
-//
-//
-//
 
 // Import the zingchart library to be used globally (MUST BE DONE EXPLICITLY BEFORE THIS COMPONENT)
 // import zingchart from 'zingchart/es6';
@@ -572,8 +552,28 @@ if (!window.ZCVUE) {
 
       // Apply all of ZingChart's methods directly to the Vue instance
       this.METHOD_NAMES.forEach(name => {
-        this[name] = args => {
-          return window.zingchart.exec(this.chartId, name, args);
+        if (name.includes('zingchart.')) {
+          let members = name.split('.');
+          // Remove `zingchart.` from name
+          this[`${members[1]}.${members[2]}`] = args => {
+            // Methods executed directly on zingchart object
+            if (members.length === 2) {
+              return window.zingchart[members[1]]();
+            } else {
+              if (members[1] === 'maps') {
+                // Does not require chart id
+                return window.zingchart[members[1]][members[2]](args);
+              } else {
+                // Requires chart id in first arg
+                return window.zingchart[members[1]][members[2]](this.chartId, args);
+              }
+            }
+          };
+        } else {
+          this[name] = args => {
+            // Methods executed through `zingchart.exec()`
+            return window.zingchart.exec(this.chartId, name, args);
+          };
         };
       });
     },
@@ -616,20 +616,19 @@ if (!window.ZCVUE) {
 // This module is a runtime utility for cleaner component module output and will
 // be included in the final webpack user bundle.
 
-function normalizeComponent (
+function normalizeComponent(
   scriptExports,
   render,
   staticRenderFns,
   functionalTemplate,
   injectStyles,
   scopeId,
-  moduleIdentifier, /* server only */
+  moduleIdentifier /* server only */,
   shadowMode /* vue-cli only */
 ) {
   // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
+  var options =
+    typeof scriptExports === 'function' ? scriptExports.options : scriptExports
 
   // render functions
   if (render) {
@@ -649,7 +648,8 @@ function normalizeComponent (
   }
 
   var hook
-  if (moduleIdentifier) { // server build
+  if (moduleIdentifier) {
+    // server build
     hook = function (context) {
       // 2.3 injection
       context =
@@ -675,11 +675,11 @@ function normalizeComponent (
   } else if (injectStyles) {
     hook = shadowMode
       ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
+          injectStyles.call(
+            this,
+            (options.functional ? this.parent : this).$root.$options.shadowRoot
+          )
+        }
       : injectStyles
   }
 
@@ -690,16 +690,14 @@ function normalizeComponent (
       options._injectStyles = hook
       // register for functional component in vue file
       var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
+      options.render = function renderWithStyleInjection(h, context) {
         hook.call(context)
         return originalRender(h, context)
       }
     } else {
       // inject component registration as beforeCreate hook
       var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook]
     }
   }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "commit": "git-cz",
     "build": "vue-cli-service build --target lib --name zingchartVue ZingChart.vue",
-    "dev": "vue serve examples/App.vue",
+    "dev": "./node_modules/.bin/vue-cli-service serve examples/App.vue",
     "test": "mocha --config=./.configs/.mocharc.js",
     "release-notes": "conventional-changelog -p angular -o CHANGELOG.md",
     "release-notes-all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
@@ -24,6 +24,7 @@
     "vue"
   ],
   "dependencies": {
+    "vue": "2.7.8",
     "zingchart": "latest",
     "zingchart-constants": "github:zingchart/zingchart-constants#master"
   },

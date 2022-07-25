@@ -127,8 +127,28 @@ export default {
 
       // Apply all of ZingChart's methods directly to the Vue instance
       this.METHOD_NAMES.forEach(name => {
-        this[name] = args => {
-          return window.zingchart.exec(this.chartId, name, args);
+        if (name.includes('zingchart.')) {
+          let members = name.split('.');
+          // Remove `zingchart.` from name
+          this[`${members[1]}.${members[2]}`] = args => {
+            // Methods executed directly on zingchart object
+            if (members.length === 2) {
+              return window.zingchart[members[1]]();
+            } else {
+              if (members[1] === 'maps') {
+                // Does not require chart id
+                return window.zingchart[members[1]][members[2]](args);
+              } else {
+                // Requires chart id in first arg
+                return window.zingchart[members[1]][members[2]](this.chartId, args);
+              }
+            }
+          };
+        } else {
+          this[name] = args => {
+            // Methods executed through `zingchart.exec()`
+            return window.zingchart.exec(this.chartId, name, args);
+          };
         };
       });
     },
