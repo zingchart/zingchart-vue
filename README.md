@@ -5,8 +5,6 @@
 
 ![](https://github.com/zingchart/zingchart-vue/workflows/Build/badge.svg?branch=master)
 ![](https://github.com/zingchart/zingchart-vue/workflows/Test/badge.svg?branch=master)
-![](https://img.shields.io/david/zingchart/zingchart-vue)
-![](https://img.shields.io/david/dev/zingchart/zingchart-vue)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
@@ -15,20 +13,22 @@
 
 ## Quickstart guide
 
-Quickly add charts to your Vue application with our ZingChart component
+Quickly add charts to your Vue application with our ZingChart component.
 
 This guide assumes some basic working knowledge of Vue.
 
 ## 1. Install
 
 
-Install the `zingchart` package via npm
+Install the `zingchart` package via npm:
+```
+npm install zingchart
+```
 
-`npm install zingchart`
-
-Install the `zingchart-vue` package via npm
-
-`npm install zingchart-vue`
+Install the `zingchart-vue` package via npm:
+```
+npm install zingchart-vue
+```
 
 ## 2. Include the `zingchart` package in your project
 
@@ -49,7 +49,7 @@ You can either include the `zingchart-vue` component to your project globally or
 // import the es6 version
 import 'zingchart/es6';
 // import the component AFTER ZingChart since it is a DIRECT dependency
-import zingchartVue from 'zingchart-vue';
+import ZingChartVue from 'zingchart-vue';
 ```
 
 ### Globally
@@ -57,13 +57,13 @@ import zingchartVue from 'zingchart-vue';
 In your main app file, add the following lines of code:
 
 ```js
-import Vue from 'vue';
-// import the es6 version
-import 'zingchart/es6';
-import zingchartVue from 'zingchart-vue';
+import { createApp } from 'vue';
+import App from './App.vue';
+import ZingChartVue from './ZingChart.vue';
 
-// install globally to app
-Vue.component('zingchart', zingchartVue)
+const app = createApp(App);
+app.component('ZingChartVue', ZingChartVue);
+app.mount('#app');
 ```
 
 This will register the zingchart component globally throughout your application. While the easiest installation option, this will load ZingChart immediately on your user's first load of the application - regardless if a chart is on the first page or not. We recommend this approach if ZingChart is used heavily across multiple pages.
@@ -72,22 +72,23 @@ This will register the zingchart component globally throughout your application.
 
 ### Globally and locally
 
-You can also register the `zingChartVue` component globally and then import just `zingchart/es6` locally per each component that uses charts. 
+You can also register the `ZingChartVue` component globally and then import just `zingchart/es6` locally per each component that uses charts. 
 
 ```js
-import Vue from 'vue';
-import zingchartVue from 'zingchart-vue';
+import { createApp } from 'vue';
+import App from './App.vue';
+import ZingChartVue from './ZingChart.vue';
 
+const app = createApp(App);
 // install globally to app
-Vue.component('zingchart', zingchartVue)
+app.component('ZingChartVue', ZingChartVue);
+app.mount('#app');
 ```
 
 Then inside the component you import the `zingchart/zingchart-es6` library.
 
 ```js
 import 'zingchart/es6';
-
-export default {...}
 ```
 
 ### Locally per component
@@ -96,15 +97,7 @@ In each component where ZingChart is being used, include the following in your c
 
 ```js
 import 'zingchart/es6';
-import zingchartVue from 'zingchart-vue';
-
-{
-    ...
-    components: {
-        zingchart: zingchartVue,
-        ...
-    }
-}
+import ZingChartVue from 'zingchart-vue';
 ```
 
 **Note:** We recommend this approach if ZingChart is only included in a few, un-related pages across your application. 
@@ -116,54 +109,47 @@ ZingChart comes bundled with your common chart types such as line, column, pie, 
 For example, adding a depth chart to your vue component will require an additional import. Note, you must import from the `modules-es6` directory in the zingchart package.
 
 ```js
-import 'zingchart/es6';
 // explicitly import the module
 import 'zingchart/modules-es6/zingchart-depth.min.js';
-}
+
 ```
 
 Here is a full .vue example for loading a map:
 
 ```
-<template>
-  <div style="height:200px">
-    <zingchart :height="'100%'" ref="myChart" 
-               :data="{
-	    shapes: [
-	      {
-	        type: 'zingchart.maps',
-	        options: {
-	          name: 'usa',
-	          ignore: ['AK','HI']
-	        }
-	      }
-	    ]
-	  }" >
-    </zingchart>
-  </div>
-</template>
+<script setup>
+    // import library
+    import ZingChartVue from 'zingchart-vue';
 
-<script>
-// import library
-import 'zingchart/es6';
-// import chart modules used on that page
-import 'zingchart/modules-es6/zingchart-maps.min.js';
-import 'zingchart/modules-es6/zingchart-maps-usa.min.js';
-
-export default {
-  ...
-}
+    // import chart modules used on that page
+    import 'zingchart/modules-es6/zingchart-maps.min.js';
+    import 'zingchart/modules-es6/zingchart-maps-usa.min.js';
 </script>
+
+<template>
+    <ZingChartVue
+        ref="myChart"
+        :data="{
+            shapes: [
+            {
+                type: 'zingchart.maps',
+                options: {
+                    name: 'usa',
+                    ignore: ['AK','HI']
+                }
+            }
+        ]
+    }" />
+</template>
 ```
 
 
 ### `zingchart` Global Objects
 
-If you need access to the `window.zingchart` objects for licensing or development flags.
+If you need access to the `zingchart` objects for licensing or development flags.
 
 ```javascript
-import zingchart from 'zingchart/es6';
-import zingchartVue from 'zingchart-vue';
+import ZingChartVue from 'zingchart-vue';
 
 // zingchart object for performance flags
 zingchart.DEV.KEEPSOURCE = 0; // prevents lib from storing the original data package
@@ -171,12 +157,6 @@ zingchart.DEV.COPYDATA = 0; // prevents lib from creating a copy of the data pac
 
 // ZC object for license key
 zingchart.LICENSE = ['abcdefghijklmnopqrstuvwxy'];
-
-export default {
-  components: {
-    zingchart: zingchartVue,
-  },
-}
 ```
 
 
@@ -185,55 +165,54 @@ export default {
 The `zingchart-vue` component can be included into template as an element. Below is a simple example of a line chart:
 
 ```html
-<zingchart :data="chartData"></zingchart>
+<ZingChartVue :data="chartData" />
 ```
 
 ```js
-...
-new Vue({
-    ...
-    data() {
-        return {
-            chartData: {
-                type: 'line',
-                series: [{
-                    values: [4,5,3,3,4,4]
-                }]
+<script setup>
+    import { ref } from 'vue';
+    import ZingChartVue from 'zingchart-vue';
+    
+    const chartData = ref({
+        type: "line",
+            series: [
+            {
+                values: [6,4,3,4,6,6,4]
             }
-        }
-    }
-    ...
-})
+        ]
+    });
+</script>
 ```
 
 ## Parameters
 
-The properties, or parameters, you can pass to the `<zingchart>` tag itself.
+The properties, or parameters, you can pass to the `<ZingChartVue>` tag itself.
 
 ### `data` [object]
 
 The configuration object to pass to the chart. This can be a `graphset` object (multi-chart shared configuration) or a standard single chart configuration.
 
 ```html
-<zingchart :data="myData" :series="mySeries"></zingchart>
+<ZingChartVue :data="myData" :series="mySeries" />
 ```
 
 ```js
-{
-    data() {
-        return {
-            myData: {
-                type: 'line',
-                title: {
-                    text: 'Hello World',
-                },
-            },
-            mySeries: [
-                { values: [1,2,4,5,6] }
-            ]
-        }
-    }
+<script setup>
+    import { ref } from 'vue';
+    import ZingChartVue from '../ZingChart.vue';
+
+    const myData = ref({
+        type: 'line',
+        title: {
+            text: 'Hello World',
+        },
+    });
+    
+    const mySeries = ref([
+        { values: [1,2,4,5,6] }
+    ]);
 }
+</script>
 ```
 
 ### `series` [array] (optional)
@@ -242,28 +221,28 @@ Accepts an array of series objects, and overrides a series if it was supplied in
 
 ### `id` [string] (optional)
 
-The id for the DOM element for ZingChart to attach to. If no id is specified, the id will be autogenerated in the form of zingchart-auto-#
+The id for the DOM element for ZingChart to attach to. If no id is specified, the id will be autogenerated in the form of zingchart-auto-#.
 
 ### `output` [string] (optional)
 
 The render type of the chart. **The default is `svg`** but you can also pass the string `canvas` to render the charts in canvas. 
 
-### width [string or number] (optional)
+### `width` [string or number] (optional)
 
-The width of the chart. Defaults to 100%
+The width of the chart. Defaults to 100%.
 
-### height [string or number] (optional)
+### `height` [string or number] (optional)
 
 The height of the chart. Defaults to 480px.
 
-### theme [object] (optional)
+### `theme` [object] (optional)
 
 The theme or 'defaults' object defined by ZingChart. More information available here: https://www.zingchart.com/docs/api/themes
 
-### modules [string or array] (optional)
+### `modules` [string or array] (optional)
 An option to add the name of modules being loaded, into ZingChart's render object. Necessary for certain modules including the 'scalableYAxis'.
 
-### forceRender 
+### `forceRender` [string] (optional)
 The addition of this property will force ZingChart to re-render on all configuration changes. This isn't optimally performant, but some ZingChart features will require a full re-render of the chart, rather than an internal data update change. Only use this option when necessary.
 
 
@@ -272,21 +251,22 @@ The addition of this property will force ZingChart to re-render on all configura
 All zingchart events are readily available on the component to listen to. For example, to listen for the 'complete' event when the chart is finished rendering:
 
 ```html
-    <zingchart :data="myData" @complete="chartCompleted"/>
+    <ZingChartVue :data="myData" @complete="chartCompleted" />
 ```
 
 ```js
 {
-    ...
-    methods: {
-        chartCompleted(result) {
-            console.log(`The chart ${result.id} finished rendering`);
-        }
+    function chartCompleted(result) {
+        console.log(`The chart ${result.id} finished rendering`);
     }
 }
 ```
 
-For a list of all the events that you can listen to, refer to the complete documentation on https://www.zingchart.com/docs/api/events
+For a list of all the events that you can listen to, refer to the complete documentation on https://www.zingchart.com/docs/api/events.
+Note that the event names are translated to camel-case:
+- complete => @complete
+- node_mouseover => @nodeMouseover
+- legend_marker_click => @legendMarkerClick
 
 
 ### Methods
@@ -294,18 +274,24 @@ For a list of all the events that you can listen to, refer to the complete docum
 All zingchart methods are readily available on the component's instance to call. For example, to add a new plot node to the chart:
 
 ```html
-    <zingchart :data="myData" ref="chart"/>
+    <ZingChartVue ref="chart" :data="myData" />
 ```
 
 ```js
 {
-    ...
-    methods: {
-        myCustomAddNode() {
-            this.$refs.chart.addnode({
-                value: 55,
-            });
-        }
+    const chart = ref(null);
+
+    function myCustomAddNode() {
+        chart.value.addnode({
+            value: 55,
+        });
+    }
+
+    function myCustomMapZoom() {
+        // Example of usage when method name contains member (.) operator
+        chart.value['zingchart.maps.viewAll']({
+            value: 55,
+        });
     }
 }
 ```

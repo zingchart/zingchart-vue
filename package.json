@@ -1,20 +1,21 @@
 {
   "name": "zingchart-vue",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "ZingChart Vue Component wrapper to allow native vue syntax for javascript charts, chart events, chart methods and chart styling.",
   "author": "ZingSoft Inc",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "commit": "git-cz",
-    "build": "vue-cli-service build --target lib --name zingchartVue ZingChart.vue",
-    "dev": "./node_modules/.bin/vue-cli-service serve examples/App.vue",
     "test": "mocha --config=./.configs/.mocharc.js",
     "release-notes": "conventional-changelog -p angular -o CHANGELOG.md",
     "release-notes-all": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
-  "main": "dist/zingchartVue.common.js",
+  "main": "dist/zingchartVue3.cjs.min.js",
   "engines": {
-    "node": ">=8",
-    "npm": ">=5"
+    "node": ">=16",
+    "npm": ">=8"
   },
   "keywords": [
     "vue charts",
@@ -24,11 +25,13 @@
     "vue"
   ],
   "dependencies": {
-    "vue": "2.7.8",
+    "vue": "3.3.2",
     "zingchart": "latest",
-    "zingchart-constants": "github:zingchart/zingchart-constants#master"
+    "zingchart-constants": "github:zingchart/zingchart-constants#master",
+    "zingchart-vue": "^2.0.4"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
     "@vue/cli-service": "^3.12.1",
     "chai": "^4.2.0",
     "chai-fs": "^2.0.0",
@@ -36,7 +39,7 @@
     "cz-conventional-changelog": "^3.2.0",
     "mocha": "^7.2.0",
     "prettier": "^1.19.1",
-    "vue-template-compiler": "^2.6.11"
+    "vite": "^4.3.5"
   },
   "files": [
     "dist"
