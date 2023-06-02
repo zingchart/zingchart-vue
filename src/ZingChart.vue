@@ -53,11 +53,18 @@
   });
 
   // DATA
-  const chart = ref(null);
+  const chart = ref();
   let chartId = null;
   let instance = null;
   let forceRenderOnChange = null;
   let renderObject = null;
+
+  // Set the id for zingchart to render to
+  if (props.id) {
+    chartId = props.id;
+  } else {
+    chartId = 'zingchart-vue-' + window.ZCVUE.count++;
+  };
 
   // COMPUTED
   const chartData = computed(() => {
@@ -96,12 +103,6 @@
     chart.value.style.width = props.width;
     chart.value.style.height = props.height;
 
-    // Set the id for zingchart to render to
-    if (props.id) {
-      chartId = props.id;
-    } else {
-      chartId = 'zingchart-vue-' + window.ZCVUE.count++;
-    }
     chart.value.setAttribute('id', chartId);
 
     renderObject = {

@@ -3,7 +3,7 @@
   import { onMounted, ref } from 'vue';
   import ZingChartVue from '../ZingChart.vue';
 
-  const chart = ref(null);
+  const chart = ref();
   const output = ref(null);
   const listOfEventListeners = ref([]);
   const chartData = ref({

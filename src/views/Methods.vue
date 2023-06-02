@@ -3,7 +3,7 @@
   import { ref } from 'vue';
   import ZingChartVue from '../ZingChart.vue';
 
-  const chart = ref(null);
+  const chart = ref();
   const chartData = ref({
     type: "line",
     series: [
@@ -42,7 +42,7 @@
       &lt;ZingChartVue ref="chart" :data="chartData" /&gt;
     </pre>
     <pre>
-      const chart = ref(null);
+      const chart = ref();
 
       // 'addplot' is a ZingChart method
       chart.value.addplot({

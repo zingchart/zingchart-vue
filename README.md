@@ -279,7 +279,7 @@ All zingchart methods are readily available on the component's instance to call.
 
 ```js
 {
-    const chart = ref(null);
+    const chart = ref();
 
     function myCustomAddNode() {
         chart.value.addnode({
