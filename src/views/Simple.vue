@@ -2,14 +2,14 @@
   import { ref } from 'vue';
   import ZingChartVue from '../ZingChart.vue';
   
-  const chartData = ref({
+  const chartData = {
     type: "line",
     series: [
       {
         values: [6,4,3,4,6,6,4]
       }
     ]
-  });
+  };
 </script>
 
 <template>
@@ -20,14 +20,14 @@
       &lt;ZingChartVue ref="chart" :data="chartData"/&gt;
     </pre>
     <pre>
-      const chartData = ref({
+      const chartData = {
         type: "line",
         series: [
           {
             values: [6,4,3,4,6,6,4]
           }
         ]
-      });
+      };
     </pre>
   </div>
 </template>

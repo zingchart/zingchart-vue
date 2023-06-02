@@ -170,17 +170,16 @@ The `zingchart-vue` component can be included into template as an element. Below
 
 ```js
 <script setup>
-    import { ref } from 'vue';
     import ZingChartVue from 'zingchart-vue';
     
-    const chartData = ref({
+    const chartData = {
         type: "line",
             series: [
             {
                 values: [6,4,3,4,6,6,4]
             }
         ]
-    });
+    };
 </script>
 ```
 
@@ -198,19 +197,18 @@ The configuration object to pass to the chart. This can be a `graphset` object (
 
 ```js
 <script setup>
-    import { ref } from 'vue';
     import ZingChartVue from '../ZingChart.vue';
 
-    const myData = ref({
+    const myData = {
         type: 'line',
         title: {
             text: 'Hello World',
         },
-    });
+    };
     
-    const mySeries = ref([
+    const mySeries = [
         { values: [1,2,4,5,6] }
-    ]);
+    ];
 }
 </script>
 ```
@@ -255,14 +253,13 @@ All zingchart events are readily available on the component to listen to. For ex
 ```
 
 ```js
-{
-    function chartCompleted(result) {
-        console.log(`The chart ${result.id} finished rendering`);
-    }
+function chartCompleted(result) {
+    console.log(`The chart ${result.id} finished rendering`);
 }
 ```
 
 For a list of all the events that you can listen to, refer to the complete documentation on https://www.zingchart.com/docs/api/events.
+
 Note that the event names are translated to camel-case:
 - complete => @complete
 - node_mouseover => @nodeMouseover
@@ -278,21 +275,19 @@ All zingchart methods are readily available on the component's instance to call.
 ```
 
 ```js
-{
-    const chart = ref();
+const chart = ref();
 
-    function myCustomAddNode() {
-        chart.value.addnode({
-            value: 55,
-        });
-    }
+function myCustomAddNode() {
+    chart.value.addnode({
+        value: 55,
+    });
+}
 
-    function myCustomMapZoom() {
-        // Example of usage when method name contains member (.) operator
-        chart.value['zingchart.maps.viewAll']({
-            value: 55,
-        });
-    }
+function myCustomMapZoom() {
+    // Example of usage when method name contains member (.) operator
+    chart.value['zingchart.maps.viewAll']({
+        value: 55,
+    });
 }
 ```
 
