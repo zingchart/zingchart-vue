@@ -28,7 +28,6 @@
     "vue": "3.3.2",
     "zingchart": "latest",
     "zingchart-constants": "github:zingchart/zingchart-constants#master",
-    "zingchart-vue": "^2.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
