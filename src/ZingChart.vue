@@ -2,7 +2,6 @@
   import { computed, onMounted, onUnmounted, ref, useAttrs, watch } from 'vue';
   // import constants that define methods, events and default rendering parameters
   import constants from 'zingchart-constants';
-  const { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_OUTPUT, EVENT_NAMES, METHOD_NAMES } = constants;
   import zingchart from 'zingchart';
 
   // One time setup globally to handle all zingchart-vue objects in the app space.
@@ -11,7 +10,7 @@
       instances: {},
       count: 0
     };
-  };
+  }
 
   // PROPS
   const props = defineProps({
@@ -55,7 +54,6 @@
   // DATA
   const chart = ref();
   let chartId = null;
-  let instance = null;
   let forceRenderOnChange = null;
   let renderObject = null;
 
@@ -64,14 +62,14 @@
     chartId = props.id;
   } else {
     chartId = 'zingchart-vue-' + window.ZCVUE.count++;
-  };
+  }
 
   // COMPUTED
   const chartData = computed(() => {
     const data = props.data;
     if (props.series) {
       data['series'] = props.series;
-    };
+    }
     return data;
   });
   // WATCHERS
@@ -83,7 +81,7 @@
       zingchart.exec(chartId, 'setdata', {
         data: chartData.value,
       });
-    };
+    }
   });
   watch(() => props.height, () => {
     resize();
@@ -122,7 +120,7 @@
 
     // Render the chart
     zingchart.render(renderObject);
-  };
+  }
 
   function resize() {
     chart.value.style.width = props.width;
@@ -131,7 +129,7 @@
       height: props.height,
       width: props.width,
     });
-  };
+  }
 
   // LIFECYCLE HOOKS
   onMounted(() => {
@@ -145,13 +143,13 @@
   // EXPOSE
   const toExpose = {};
   // Apply all of ZingChart's methods directly to the Vue instance
-  METHOD_NAMES.forEach(name => {
+  constants.METHOD_NAMES.forEach(name => {
     if (name.includes('zingchart.')) {
       // Remove `zingchart.` from name
       let members = name.split('.');
       // Methods executed directly on zingchart object
       if (members.length === 2) {
-        toExpose[`${members[1]}`] = args => {
+        toExpose[`${members[1]}`] = () => {
           return zingchart[members[1]]();
         };
       } else {
@@ -164,19 +162,19 @@
             return zingchart[members[1]][members[2]](chartId, args);
           }
         };
-      };
+      }
     } else {
       toExpose[name] = args => {
         // Methods executed through `zingchart.exec()`
         return zingchart.exec(chartId, name, args);
       };
-    };
+    }
   });
   // Pipe zingchart specific event listeners
   const attrs = useAttrs();
   Object.keys(attrs).forEach(attr => {
     let eventName = attr.slice(2).replace(/(?:^|\.?)([A-Z])/g, function (x,y){return '_' + y.toLowerCase()}).replace(/^_/, '');
-    if (EVENT_NAMES.includes(eventName)) {
+    if (constants.EVENT_NAMES.includes(eventName)) {
       // Filter through the provided events list, then register it to zingchart.
       zingchart.bind(chartId, eventName, result => {
         attrs[attr](result);

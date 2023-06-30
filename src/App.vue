@@ -1,5 +1,5 @@
 <script setup>
-  import {onMounted, ref} from 'vue';
+  import {ref} from 'vue';
 
   import MethodsView from './views/Methods.vue';
   import EventsView from './views/Events.vue';
