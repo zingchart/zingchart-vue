@@ -119,6 +119,7 @@ Here is a full .vue example for loading a map:
 ```
 <script setup>
     // import library
+    import 'zingchart/es6';
     import ZingChartVue from 'zingchart-vue';
 
     // import chart modules used on that page

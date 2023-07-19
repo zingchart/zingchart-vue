@@ -1,6 +1,7 @@
 
 <script setup>
   import { ref } from 'vue';
+  import 'zingchart/es6';
   import ZingChartVue from '../ZingChart.vue';
   // import chart modules used on that page
   import 'zingchart/modules-es6/zingchart-maps.min.js';
