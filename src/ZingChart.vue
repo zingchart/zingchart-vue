@@ -111,7 +111,7 @@
       output: props.output,
     };
     if (props.modules) {
-      renderObject.modules = props.modules;
+      renderObject.modules = typeof props.modules === 'string' ? props.modules : props.modules.toString();
     }
 
     if (props.theme) {
